@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledHeader = styled.div`
@@ -36,21 +37,21 @@ const StyledHeader = styled.div`
   }
 `;
 
-export class Header extends Component {
+class Header extends Component {
   render() {
     return (
       <StyledHeader id='header'>
-        <a href='#' className='title'>
+        <Link to='news' className='title'>
           ThemedHN
-        </a>
+        </Link>
         <nav>
-          <a href='#'>new</a>
-          <a href='#'>more</a>
-          <a href='#'>comments</a>
-          <a href='#'>ask</a>
-          <a href='#'>show</a>
-          <a href='#'>jobs</a>
-          <a href='#'>submit</a>
+          <Link to='/news'>new</Link>
+          <Link to='/next'>more</Link>
+          <Link to='/comments'>comments</Link>
+          <Link to='/ask'>ask</Link>
+          <Link to='/show'>show</Link>
+          <Link to='/jobs'>jobs</Link>
+          <Link to='/submit'>submit</Link>
         </nav>
       </StyledHeader>
     );
