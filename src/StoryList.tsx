@@ -70,7 +70,7 @@ class StoryList extends Component<IProps, IState> {
     const { stories } = this.state;
 
     const storiesList = stories.map((story: IStory) => (
-      <Story title={story.title} url={story.url} score={story.score} kids={story.kids} key={story.id} />
+      <Story title={story.title} url={story.url} score={story.score} kids={story.kids} id={story.id} key={story.id} />
     ));
 
     return <div id='story-list'>{storiesList}</div>;
