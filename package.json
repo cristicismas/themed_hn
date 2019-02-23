@@ -1,5 +1,5 @@
 {
-  "name": "hn_clone",
+  "name": "themed_hn",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
