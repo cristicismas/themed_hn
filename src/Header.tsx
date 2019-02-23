@@ -41,7 +41,7 @@ class Header extends Component {
   render() {
     return (
       <StyledHeader id='header'>
-        <Link to='news' className='title'>
+        <Link to='/' className='title'>
           ThemedHN
         </Link>
         <nav>

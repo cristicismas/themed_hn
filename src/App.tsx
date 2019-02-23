@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { URLS } from './constants/fetchUrls';
+
 import Header from './Header';
-import News from './News';
+import StoryList from './StoryList';
 
 class App extends Component {
   render() {
@@ -9,7 +11,11 @@ class App extends Component {
       <div className="app">
         <Header />
         <Switch>
-          <Route exact path='/news' component={News} />
+          <Route exact path='/news' render={() => <StoryList fetchUrl={URLS.NEW_STORIES} />} />
+          <Route exact path='/ask' render={() => <StoryList fetchUrl={URLS.ASK_STORIES} />} />
+          <Route exact path='/show' render={() => <StoryList fetchUrl={URLS.SHOW_STORIES} />} />
+          <Route exact path='/jobs' render={() => <StoryList fetchUrl={URLS.JOB_STORIES} />} />
+          <Route exact path='/' render={() => <StoryList fetchUrl={URLS.TOP_STORIES} />} />
         </Switch>
       </div>
     );
