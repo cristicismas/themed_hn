@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export function apiCall(path, data) {
+export function apiCall(path) {
   return new Promise((resolve, reject) => {
-    return axios.get(`https://hacker-news.firebaseio.com/v0/${path}.json`, data)
+    return axios.get(`https://hacker-news.firebaseio.com/v0/${path}.json`)
       .then(res => {
         return resolve(res.data);
       })

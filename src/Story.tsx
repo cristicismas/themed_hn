@@ -17,13 +17,13 @@ interface IProps {
   title: string;
   url: string;
   score: number;
-  kids: number[];
+  descendants: number;
   id: number;
 }
 
 class Story extends Component<IProps, object> {
   render() {
-    const { title, url, score, kids, id } = this.props;
+    const { title, url, score, descendants, id } = this.props;
 
     return (
       <Link to={`/${id}`}>
@@ -31,7 +31,7 @@ class Story extends Component<IProps, object> {
           <a href={url} className='story'>
             {title}
           </a>
-          <p>{score} points | {kids ? kids.length : '0'} comments</p>
+          <p>{score} points | {descendants} comments</p>
         </StyledStory>
       </Link>
     );
