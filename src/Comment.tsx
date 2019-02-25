@@ -40,7 +40,12 @@ class Comment extends Component<IProps, object> {
 
     return (
       <div>
-        <StyledComment level={level} className='comment'>{comment.text}</StyledComment>
+        <StyledComment
+          level={level}
+          className='comment'
+          id={comment.id.toString()}
+          dangerouslySetInnerHTML={{ __html: comment.text }}
+        />
         <hr />
         <Comments comments={comment.kids ? comment.kids : []} level={level + 1} />
       </div>
