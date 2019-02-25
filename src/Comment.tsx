@@ -27,6 +27,7 @@ interface IComment {
   parent: number;
   text: string;
   time: number;
+  deleted?: boolean;
 }
 
 interface IProps {
@@ -44,7 +45,7 @@ class Comment extends Component<IProps, object> {
           level={level}
           className='comment'
           id={comment.id.toString()}
-          dangerouslySetInnerHTML={{ __html: comment.text }}
+          dangerouslySetInnerHTML={{ __html: comment.deleted ? '[deleted]' : comment.text }}
         />
         <hr />
         <Comments comments={comment.kids ? comment.kids : []} level={level + 1} />
