@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -26,14 +26,14 @@ class Story extends Component<IProps, object> {
     const { title, url, score, descendants, id } = this.props;
 
     return (
-      <Link to={`/${id}`}>
-        <StyledStory className='story'>
-          <a href={url} className='story'>
-            {title}
-          </a>
-          <p>{score} points | {descendants} comments</p>
-        </StyledStory>
-      </Link>
+      <StyledStory className='story'>
+        <a href={url} className='story'>
+          {title}
+        </a>
+        <p>
+          {score} points |<Link to={`/${id}`}>{descendants} comments</Link>
+        </p>
+      </StyledStory>
     );
   }
 }
