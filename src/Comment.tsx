@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import TimeAgo from 'react-timeago';
 
 interface IStyleProps {
   level: number;
 }
 
-const StyledComment = styled.p`
+const StyledComment = styled.div`
   margin-left: ${(props: IStyleProps) => {
     const { level } = props;
 
@@ -38,15 +39,18 @@ interface IProps {
 class Comment extends Component<IProps, object> {
   render() {
     const { comment, level } = this.props;
+    // Convert unix time to js' Date.
+    const commentTime = new Date(comment.time * 1000);
 
     return (
       <div>
-        <StyledComment
-          level={level}
-          className='comment'
-          id={comment.id.toString()}
-          dangerouslySetInnerHTML={{ __html: comment.deleted ? '[deleted]' : comment.text }}
-        />
+        <StyledComment level={level} className='comment' id={comment.id.toString()}>
+          <p
+            className='comment-text'
+            dangerouslySetInnerHTML={{ __html: comment.deleted ? '[deleted]' : comment.text }}
+          />
+          <div>by {comment.by} <TimeAgo date={commentTime} /></div>
+        </StyledComment>
         <hr />
         <Comments comments={comment.kids ? comment.kids : []} level={level + 1} />
       </div>
