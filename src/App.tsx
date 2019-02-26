@@ -5,6 +5,7 @@ import { URLS } from './constants/fetchUrls';
 import Header from './Header';
 import StoryList from './StoryList';
 import StoryDetails from './StoryDetails';
+import Profile from './Profile';
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
           <Route exact path='/show' render={() => <StoryList fetchUrl={URLS.SHOW_STORIES} />} />
           <Route exact path='/jobs' render={() => <StoryList fetchUrl={URLS.JOB_STORIES} />} />
           <Route exact path='/:id' component={StoryDetails} />
+          <Route exact path='/profile/:id' component={Profile} />
           <Route exact path='/' render={() => <StoryList fetchUrl={URLS.TOP_STORIES} />} />
         </Switch>
       </div>

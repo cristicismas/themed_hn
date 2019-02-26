@@ -8,6 +8,7 @@ interface IStory {
   url: string;
   score: number;
   descendants: number;
+  by: string;
 }
 
 interface IState {
@@ -70,7 +71,7 @@ class StoryList extends Component<IProps, IState> {
     const { stories } = this.state;
 
     const storiesList = stories.map((story: IStory) => (
-      <Story title={story.title} url={story.url} score={story.score} descendants={story.descendants} id={story.id} key={story.id} />
+      <Story {...story} key={story.id} />
     ));
 
     return <div id='story-list'>{storiesList}</div>;

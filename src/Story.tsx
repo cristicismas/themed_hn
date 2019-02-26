@@ -21,11 +21,12 @@ interface IProps {
   score: number;
   descendants: number;
   id: number;
+  by: string;
 }
 
 class Story extends Component<IProps, object> {
   render() {
-    const { title, url, score, descendants, id } = this.props;
+    const { title, url, score, descendants, id, by } = this.props;
 
     return (
       <StyledStory className='story'>
@@ -33,7 +34,7 @@ class Story extends Component<IProps, object> {
           {title}
         </a>
         <p>
-          {score} points | <Link to={`/${id}`}>{descendants} comments</Link>
+          {score} points | <Link to={`/${id}`}>{descendants} comments</Link> | posted by <Link to={`/profile/${by}`}>{by}</Link>
         </p>
       </StyledStory>
     );
