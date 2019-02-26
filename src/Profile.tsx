@@ -44,7 +44,17 @@ class Profile extends Component<IProps, IState> {
 
     // fetch user data.
     apiCall('user/' + id).then(res => {
-      this.setState({ ...res });
+      var months_arr = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+      var date = new Date(res.created * 1000);
+
+      var year = date.getFullYear();
+      var month = months_arr[date.getMonth()];
+      var day = date.getDate();
+
+      var finalDate = month + ' ' + day + ', ' + year;
+
+      this.setState({ ...res, created: finalDate });
     });
   }
 
