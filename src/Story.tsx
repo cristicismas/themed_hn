@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const StyledStory = styled.div`
+  margin: 10px;
+
   :hover {
     background-color: #ddd;
   }
@@ -31,7 +33,7 @@ class Story extends Component<IProps, object> {
           {title}
         </a>
         <p>
-          {score} points |<Link to={`/${id}`}>{descendants} comments</Link>
+          {score} points | <Link to={`/${id}`}>{descendants} comments</Link>
         </p>
       </StyledStory>
     );
