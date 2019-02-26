@@ -19,6 +19,7 @@ const StyledComment = styled.div`
 `;
 
 import Comments from './Comments';
+import { Link } from 'react-router-dom';
 
 interface IComment {
   by: string;
@@ -49,7 +50,7 @@ class Comment extends Component<IProps, object> {
             className='comment-text'
             dangerouslySetInnerHTML={{ __html: comment.deleted ? '[deleted]' : comment.text }}
           />
-          <div>by {comment.by} <TimeAgo date={commentTime} /></div>
+          <div>by <Link to={`profile/${comment.by}`}>{comment.by}</Link> <TimeAgo date={commentTime} /></div>
         </StyledComment>
         <hr />
         <Comments comments={comment.kids ? comment.kids : []} level={level + 1} />
