@@ -1,5 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
+import TimeAgo from 'react-timeago';
 import { Link } from 'react-router-dom';
 
 const StyledStory = styled.div`
@@ -22,11 +23,13 @@ interface IProps {
   descendants: number;
   id: number;
   by: string;
+  time: number;
 }
 
 class Story extends Component<IProps, object> {
   render() {
-    const { title, url, score, descendants, id, by } = this.props;
+    const { title, url, score, descendants, id, by, time } = this.props;
+    const storyTime = time === 0 ? new Date() : new Date(time * 1000);
 
     return (
       <StyledStory className='story'>
@@ -34,7 +37,7 @@ class Story extends Component<IProps, object> {
           {title}
         </a>
         <p>
-          {score} points | <Link to={`/${id}`}>{descendants} comments</Link> | posted by <Link to={`/profile/${by}`}>{by}</Link>
+          {score} points | <Link to={`/${id}`}>{descendants} comments</Link> | posted by <Link to={`/profile/${by}`}>{by}</Link> <TimeAgo date={storyTime} />
         </p>
       </StyledStory>
     );

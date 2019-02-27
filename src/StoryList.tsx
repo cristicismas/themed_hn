@@ -9,6 +9,7 @@ interface IStory {
   score: number;
   descendants: number;
   by: string;
+  time: number;
 }
 
 interface IState {
