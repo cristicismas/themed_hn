@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import TimeAgo from 'react-timeago';
+import { Link } from 'react-router-dom';
+
+import Comments from './Comments';
 
 interface IStyleProps {
   level: number;
@@ -24,8 +27,6 @@ const StyledComment = styled.div`
   }
 `;
 
-import Comments from './Comments';
-import { Link } from 'react-router-dom';
 
 interface IComment {
   by: string;
