@@ -31,11 +31,25 @@ class Story extends Component<IProps, object> {
     const { title, url, score, descendants, id, by, time } = this.props;
     const storyTime = time === 0 ? new Date() : new Date(time * 1000);
 
+    const StoryTitle = () => {
+      if (url) {
+        return (
+          <a href={url} className='story'>
+            {title}
+          </a>
+        );
+      } else {
+        return (
+          <Link to={`/${id}`} className='story'>
+            {title}
+          </Link>
+        );
+      }
+    }
+
     return (
       <StyledStory className='story'>
-        <a href={url} className='story'>
-          {title}
-        </a>
+        <StoryTitle />
         <p>
           {score} points | <Link to={`/${id}`}>{descendants} comments</Link> | posted by <Link to={`/profile/${by}`}>{by}</Link> <TimeAgo date={storyTime} />
         </p>
