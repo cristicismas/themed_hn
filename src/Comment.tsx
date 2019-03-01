@@ -10,7 +10,14 @@ interface IStyleProps {
 }
 
 const StyledComment = styled.div`
-  margin-left: ${(props: IStyleProps) => {
+  margin: 5px;
+  padding: 15px;
+
+  :hover {
+    background-color: #ddd;
+  }
+
+  padding-left: ${(props: IStyleProps) => {
     const { level } = props;
 
     if (level === 0) {
@@ -19,6 +26,7 @@ const StyledComment = styled.div`
 
     return level * 50 + 'px';
   }};
+
 
   .collapse-button {
     background-color: transparent;
