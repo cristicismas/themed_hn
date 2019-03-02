@@ -50,7 +50,6 @@ class Header extends Component {
           <Link to='/ask'>ask</Link>
           <Link to='/show'>show</Link>
           <Link to='/jobs'>jobs</Link>
-          <Link to='/submit'>submit</Link>
         </nav>
       </StyledHeader>
     );
