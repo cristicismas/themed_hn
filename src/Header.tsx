@@ -46,7 +46,6 @@ class Header extends Component {
         </Link>
         <nav>
           <Link to='/news'>new</Link>
-          <Link to='/next'>more</Link>
           <Link to='/comments'>comments</Link>
           <Link to='/ask'>ask</Link>
           <Link to='/show'>show</Link>
