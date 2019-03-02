@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { apiCall } from './services/api';
 import Story from './Story';
+import { DEFAULTS } from './constants/defaults';
 
 interface IStory {
   title: string;
@@ -34,10 +35,8 @@ class StoryList extends Component<IProps, IState> {
 
     // Fetches story ids
     apiCall(fetchUrl).then((res: number[]) => {
-      const storyNumbers: number[] = res.slice(0, 25);
-
       // For every id it fetches a story
-      storyNumbers.forEach((storyNumber: number) => {
+      res.forEach((storyNumber: number) => {
         apiCall(`item/${storyNumber}`).then((res: IStory) => {
           this.setState(prevState => ({
             stories: [...prevState.stories, res]
@@ -54,10 +53,8 @@ class StoryList extends Component<IProps, IState> {
       this.setState({ stories: [] });
       // Fetches story ids
       apiCall(fetchUrl).then((res: number[]) => {
-        const storyNumbers: number[] = res.slice(0, 20);
-
         // For every id it fetches a story
-        storyNumbers.forEach((storyNumber: number) => {
+        res.forEach((storyNumber: number) => {
           apiCall(`item/${storyNumber}`).then((res: IStory) => {
             this.setState(prevState => ({
               stories: [...prevState.stories, res]
@@ -70,8 +67,13 @@ class StoryList extends Component<IProps, IState> {
 
   render() {
     const { stories } = this.state;
+    const currentPageNumber = 0;
+    const startIndex = DEFAULTS.STORIES_PER_PAGE * currentPageNumber;
+    const endIndex = startIndex + DEFAULTS.STORIES_PER_PAGE;
 
-    const storiesList = stories.map((story: IStory) => (
+    const storiesForPage = stories.slice(startIndex, endIndex);
+
+    const storiesList = storiesForPage.map((story: IStory) => (
       <Story {...story} key={story.id} />
     ));
 
