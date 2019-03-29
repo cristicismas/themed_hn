@@ -17,7 +17,7 @@ class App extends Component {
           <Route exact path='/ask' render={() => <StoryList fetchUrl={URLS.ASK_STORIES} />} />
           <Route exact path='/show' render={() => <StoryList fetchUrl={URLS.SHOW_STORIES} />} />
           <Route exact path='/jobs' render={() => <StoryList fetchUrl={URLS.JOB_STORIES} />} />
-          <Route exact path='/:id' component={StoryDetails} />
+          <Route exact path='/story/:id' component={StoryDetails} />
           <Route exact path='/profile/:id' component={Profile} />
           <Route exact path='/' render={() => <StoryList fetchUrl={URLS.TOP_STORIES} />} />
         </Switch>

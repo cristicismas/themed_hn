@@ -40,7 +40,7 @@ class Story extends Component<IProps, object> {
         );
       } else {
         return (
-          <Link to={`/${id}`} className='story'>
+          <Link to={`/story/${id}`} className='story'>
             {title}
           </Link>
         );
@@ -51,7 +51,7 @@ class Story extends Component<IProps, object> {
       <StyledStory className='story'>
         <StoryTitle />
         <p>
-          {score} points | <Link to={`/${id}`}>{descendants} comments</Link> | posted by <Link to={`/profile/${by}`}>{by}</Link> <TimeAgo date={storyTime} />
+          {score} points | <Link to={`/story/${id}`}>{descendants} comments</Link> | posted by <Link to={`/profile/${by}`}>{by}</Link> <TimeAgo date={storyTime} />
         </p>
       </StyledStory>
     );
