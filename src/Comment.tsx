@@ -32,6 +32,7 @@ const StyledComment = styled.div`
     background-color: transparent;
     border: 0;
     cursor: pointer;
+    color: #333;
   }
 `;
 
