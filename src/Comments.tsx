@@ -1,7 +1,21 @@
-import React, { Component } from 'react';
-import { apiCall } from './services/api';
+import React, { Component } from "react";
+import styled from "styled-components";
+import { apiCall } from "./services/api";
 
-import Comment from './Comment';
+import Comment from "./Comment";
+
+interface IStyleProps {
+  collapsed: boolean;
+}
+
+const CommentsList = styled.div`
+  display: ${(props: IStyleProps) => {
+    const { collapsed } = props;
+
+    if (collapsed) return 'none';
+    else return 'default';
+  }};
+`;
 
 interface IComment {
   by: string;
@@ -16,6 +30,7 @@ interface IComment {
 interface IProps {
   comments: number[];
   level: number;
+  collapsed: boolean;
 }
 
 interface IState {
@@ -33,7 +48,7 @@ class Comments extends Component<IProps, IState> {
 
   componentDidMount() {
     this.props.comments.forEach(comment => {
-      apiCall('item/' + comment).then((res: IComment) => {
+      apiCall("item/" + comment).then((res: IComment) => {
         this.setState(prevState => ({
           comments: [...prevState.comments, res]
         }));
@@ -46,7 +61,7 @@ class Comments extends Component<IProps, IState> {
 
     if (prevProps.comments.length !== comments.length) {
       this.props.comments.forEach(comment => {
-        apiCall('item/' + comment).then((res: IComment) => {
+        apiCall("item/" + comment).then((res: IComment) => {
           this.setState(prevState => ({
             comments: [...prevState.comments, res]
           }));
@@ -57,11 +72,13 @@ class Comments extends Component<IProps, IState> {
 
   render() {
     const { comments } = this.state;
-    const { level } = this.props;
+    const { level, collapsed } = this.props;
 
-    const commentsList = comments.map(comment => <Comment comment={comment} key={comment.id} level={level} />);
+    const commentsList = comments.map(comment => (
+      <Comment comment={comment} key={comment.id} level={level} />
+    ));
 
-    return <div className='comments'>{commentsList}</div>;
+    return <CommentsList collapsed={collapsed} className="comments">{commentsList}</CommentsList>;
   }
 }
 

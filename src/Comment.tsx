@@ -90,7 +90,7 @@ class Comment extends Component<IProps, IState> {
           </div>
         </StyledComment>
         <hr />
-        {!collapsed ? <Comments comments={comment.kids ? comment.kids : []} level={level + 1} /> : null}
+        <Comments comments={comment.kids ? comment.kids : []} level={level + 1} collapsed={collapsed} />
       </div>
     );
   }

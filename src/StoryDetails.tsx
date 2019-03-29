@@ -49,7 +49,7 @@ class StoryDetails extends Component<IProps, IState> {
       <div id='story-details'>
         <h2><a href={url}>{title}</a></h2>
         <div>{score} score | {descendants} comments | posted by <Link to={`profile/${by}`}>{by}</Link> <TimeAgo date={commentTime} /></div>
-        <Comments comments={kids} level={0} />
+        <Comments comments={kids} level={0} collapsed={false} />
       </div>
     );
   }
