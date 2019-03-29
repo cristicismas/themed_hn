@@ -45,6 +45,7 @@ class Header extends Component {
           ThemedHN
         </Link>
         <nav>
+          <Link to='/'>top</Link>
           <Link to='/news'>new</Link>
           <Link to='/ask'>ask</Link>
           <Link to='/show'>show</Link>
