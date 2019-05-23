@@ -7,7 +7,7 @@ const StyledStory = styled.div`
   margin: 10px;
 
   :hover {
-    background-color: #ddd;
+    background-color: #333;
   }
 
   p {

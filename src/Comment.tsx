@@ -14,7 +14,7 @@ const StyledComment = styled.div`
   padding: 15px;
 
   :hover {
-    background-color: #ddd;
+    background-color: #333;
   }
 
   padding-left: ${(props: IStyleProps) => {
